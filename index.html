@@ -11,11 +11,11 @@
 
     <style>
         :root {
-            --bg-cosmic: #0a041c;     /* El azul noche profundo de tus ilustraciones */
-            --magic-purple: #3a125d;  /* Violeta de la bruma nocturna */
-            --magic-magenta: #70197d; /* Tono místico de las nubes */
-            --accent-gold: #fff176;   /* El oro brillante de los destellos centrales */
-            --deep-gold: #f5b041;     /* Oro viejo para los marcos */
+            --bg-cosmic: #0a041c;     
+            --magic-purple: #3a125d;  
+            --magic-magenta: #70197d; 
+            --accent-gold: #fff176;   
+            --deep-gold: #f5b041;     
             --text-light: #f5effa;    
             --text-muted: #d2c4e3;    
         }
@@ -36,7 +36,7 @@
         }
 
         /* ==========================================================================
-           FONDO DE FANTASÍA ILUSTRADA (Inspirado en tus referencias)
+           FONDO CON TUS ILUSTRACIONES DE REFERENCIA
            ========================================================================== */
         .fantasy-background {
             position: fixed;
@@ -47,10 +47,12 @@
             z-index: -2;
             overflow: hidden;
             pointer-events: none;
-            background: radial-gradient(circle at 50% 35%, #251249 0%, #0f0624 60%, #05020c 100%);
+            /* Se usa tu ilustración principal de fondo celestial de manera fija y centrada */
+            background: url('image_25a0c5.jpg') no-repeat center center;
+            background-size: cover;
         }
 
-        /* Rayos de sol divinos y masivos saliendo del centro */
+        /* Rayos dorados vectoriales acoplados sobre la ilustración de fondo */
         .divine-rays {
             position: absolute;
             top: -20%;
@@ -60,89 +62,43 @@
             background: conic-gradient(
                 from 0deg at 50% 35%,
                 transparent 0deg,
-                rgba(255, 241, 118, 0.08) 15deg,
+                rgba(255, 241, 118, 0.05) 15deg,
                 transparent 30deg,
-                rgba(112, 25, 125, 0.15) 45deg,
+                rgba(112, 25, 125, 0.1) 45deg,
                 transparent 70deg,
-                rgba(255, 241, 118, 0.06) 105deg,
+                rgba(255, 241, 118, 0.04) 105deg,
                 transparent 140deg,
-                rgba(112, 25, 125, 0.12) 200deg,
+                rgba(112, 25, 125, 0.08) 200deg,
                 transparent 240deg,
-                rgba(255, 241, 118, 0.09) 290deg,
+                rgba(255, 241, 118, 0.06) 290deg,
                 transparent 360deg
             );
-            filter: blur(2px);
-            animation: raysOrbit 120s linear infinite;
-        }
-
-        /* Nubes mágicas y curvas en los extremos superiores e inferiores */
-        .cosmic-cloud {
-            position: absolute;
-            background: radial-gradient(circle, var(--magic-magenta) 0%, var(--magic-purple) 50%, transparent 100%);
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.5;
+            filter: blur(4px);
             mix-blend-mode: screen;
-        }
-        .cloud-top-left { width: 600px; height: 400px; top: -10%; left: -10%; }
-        .cloud-bottom-right { width: 800px; height: 500px; bottom: -15%; right: -10%; opacity: 0.4; }
-
-        /* Estrellas colgantes de 4 puntas de la ilustración */
-        .hanging-star-container {
-            position: absolute;
-            top: 0;
-            z-index: -1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            animation: starSway 6s ease-in-out infinite alternate;
-            transform-origin: top center;
-        }
-        .star-wire {
-            width: 1px;
-            background: linear-gradient(to bottom, rgba(255,241,118,0), rgba(255,241,118,0.4));
-        }
-        .fairy-star {
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(135deg, #fff, var(--accent-gold));
-            clip-path: polygon(50% 0%, 63% 37%, 100% 50%, 63% 63%, 50% 100%, 37% 63%, 0% 50%, 37% 37%);
-            box-shadow: 0 0 20px var(--accent-gold);
-            filter: drop-shadow(0 0 8px rgba(255,241,118,0.8));
+            animation: raysOrbit 140s linear infinite;
         }
 
-        /* Distribución de las estrellas por el lienzo */
-        .st-1 { left: 12%; .star-wire { height: 180px; } }
-        .st-2 { left: 22%; .star-wire { height: 90px; } .fairy-star { transform: scale(0.7); } animation-delay: -1.5s; }
-        .st-3 { right: 15%; .star-wire { height: 140px; } .fairy-star { transform: scale(1.2); } animation-delay: -3s; }
-        .st-4 { right: 28%; .star-wire { height: 220px; } .fairy-star { transform: scale(0.6); } animation-delay: -4.5s; }
-
-        /* Brillantina flotante por el aire */
+        /* Brillantina de luz residual cayendo */
         .sparkle-dust {
             position: absolute;
             background: #fff;
             border-radius: 50%;
             filter: drop-shadow(0 0 5px var(--accent-gold));
-            animation: floatDust 10s linear infinite;
+            animation: floatDust 12s linear infinite;
         }
 
-        /* Animaciones mecánicas de fantasía */
         @keyframes raysOrbit {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        @keyframes starSway {
-            0% { transform: rotate(-3deg); }
-            100% { transform: rotate(3deg); }
-        }
         @keyframes floatDust {
-            0% { transform: translateY(105vh) scale(0.5); opacity: 0; }
-            50% { opacity: 0.8; }
-            100% { transform: translateY(-5vh) scale(1.2); opacity: 0; }
+            0% { transform: translateY(105vh) scale(0.3); opacity: 0; }
+            50% { opacity: 0.7; }
+            100% { transform: translateY(-5vh) scale(1); opacity: 0; }
         }
 
         /* ==========================================================================
-           INTERFAZ DE USUARIO ESTILO CUENTO DE HADAS
+           INTERFAZ DE USUARIO (MÁGICA Y TRADICIONAL)
            ========================================================================== */
         header {
             display: flex;
@@ -156,8 +112,8 @@
         }
 
         .logo {
-            height: 70px;
-            filter: drop-shadow(0 0 15px rgba(112, 25, 125, 0.8));
+            height: 75px;
+            filter: drop-shadow(0 0 15px rgba(255, 241, 118, 0.4));
         }
 
         .hero {
@@ -166,47 +122,44 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 140px 20px 60px 20px;
+            padding: 160px 20px 60px 20px;
             text-align: center;
             position: relative;
         }
 
-        /* Gran aura dorada central como el sol de tus referencias */
+        /* El gran destello central dorado que abraza el reproductor */
         .divine-sun {
             position: absolute;
-            top: 35%;
+            top: 40%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(255,241,118,0.18) 0%, rgba(112,25,125,0.05) 50%, transparent 70%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,241,118,0.22) 0%, rgba(112,25,125,0.06) 55%, transparent 75%);
             z-index: 0;
             pointer-events: none;
-            animation: sunPulse 4s ease-in-out infinite alternate;
-        }
-        @keyframes sunPulse {
-            0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.7; }
-            100% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+            mix-blend-mode: screen;
         }
 
-        /* Contenedor del video: Marco de Vitral Real */
+        /* Contenedor del video: Diseñado como un Vitral de Arco Gótico Ojival */
         .video-container {
             width: 100%;
-            max-width: 900px; 
-            aspect-ratio: 16/9;
-            background-color: #04010a;
-            border-radius: 24px;
+            max-width: 880px; 
+            aspect-ratio: 16/10; /* Un formato levemente más vertical para favorecer el arco */
+            background-color: #05020c;
+            
+            /* Curva superior ojival simulando la ventana del castillo */
+            border-radius: 50% 50% 24px 24px / 22% 22% 24px 24px;
             overflow: hidden;
             
-            /* Borde doble: emula los marcos ornamentados de las ilustraciones */
-            border: 3px solid var(--deep-gold);
-            outline: 1px solid rgba(255, 241, 118, 0.3);
-            outline-offset: -8px;
+            border: 3.5px solid var(--deep-gold);
+            outline: 1px solid rgba(255, 241, 118, 0.4);
+            outline-offset: -10px;
             
             box-shadow: 
-                0 0 0 1px rgba(0,0,0,0.8),
-                0 25px 60px rgba(0, 0, 0, 0.8),
-                0 0 50px rgba(112, 25, 125, 0.4);
+                0 25px 60px rgba(0, 0, 0, 0.85),
+                0 0 45px rgba(112, 25, 125, 0.5),
+                inset 0 0 40px rgba(0,0,0,0.9);
             position: relative;
             z-index: 2;
         }
@@ -216,12 +169,13 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            margin-top: 10px; /* Compensa la curvatura del arco gótico */
         }
 
-        /* Botón Votar: El amuleto mágico de oro tallado */
+        /* Botón Votar: Amuleto de Oro Místico */
         .btn-votar {
-            margin-top: 50px;
-            padding: 18px 80px;
+            margin-top: 55px;
+            padding: 18px 85px;
             font-family: 'Cinzel', serif;
             font-size: 1.8rem;
             font-weight: 700;
@@ -229,7 +183,6 @@
             letter-spacing: 5px;
             color: #120324;
             
-            /* Gradiente de oro pulido de cuento */
             background: linear-gradient(135deg, #fff9c4 0%, #fff176 40%, #f5b041 100%);
             border: 2px solid #ffffff;
             border-radius: 40px;
@@ -239,8 +192,8 @@
             z-index: 2;
             
             box-shadow: 
-                0 10px 30px rgba(0, 0, 0, 0.5),
-                0 0 30px rgba(255, 241, 118, 0.6),
+                0 12px 35px rgba(0, 0, 0, 0.6),
+                0 0 30px rgba(255, 241, 118, 0.5),
                 inset 0 2px 4px #fff;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
@@ -248,45 +201,66 @@
         .btn-votar:hover {
             transform: scale(1.05) translateY(-4px);
             box-shadow: 
-                0 15px 35px rgba(0, 0, 0, 0.6),
-                0 0 50px var(--accent-gold),
-                0 0 20px rgba(255,255,255,0.8);
+                0 15px 40px rgba(0, 0, 0, 0.7),
+                0 0 55px var(--accent-gold),
+                0 0 25px rgba(255,255,255,0.9);
             letter-spacing: 7px;
         }
 
-        /* Secciones de texto: Pergaminos de Cristal Oscuro */
+        /* Secciones de Información Estilo Pergaminos de Cristal Ocultos */
         .info-section {
             max-width: 850px;
             margin: 0 auto;
-            padding: 20px 20px 140px 20px;
+            padding: 20px 20px 150px 20px;
             position: relative;
             z-index: 2;
         }
 
         .info-card {
-            background: rgba(15, 7, 31, 0.75);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            position: relative;
+            background: rgba(13, 6, 28, 0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             padding: 55px;
             border-radius: 24px;
-            
-            /* Bordes elegantes y finos sacados del castillo */
-            border: 1px solid rgba(245, 176, 65, 0.3);
+            border: 1px solid rgba(245, 176, 65, 0.35);
             box-shadow: 
-                0 30px 60px rgba(0, 0, 0, 0.7),
-                inset 0 0 25px rgba(112, 25, 125, 0.2);
-            margin-bottom: 55px;
+                0 30px 60px rgba(0, 0, 0, 0.8),
+                inset 0 0 30px rgba(112, 25, 125, 0.25);
+            margin-bottom: 60px;
+            overflow: hidden;
+        }
+
+        /* Integración de la ilustración del Castillo en el fondo de las tarjetas */
+        .info-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('image_24bf52.jpg') no-repeat center bottom;
+            background-size: cover;
+            opacity: 0.08; /* Muy sutil para que no afecte la lectura del texto */
+            mix-blend-mode: overlay;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .info-card * {
+            position: relative;
+            z-index: 1; /* Posiciona el texto por encima del fondo del castillo */
         }
 
         h2 {
             font-family: 'Cinzel', serif;
             color: var(--accent-gold);
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             margin-bottom: 25px;
             text-align: center;
             border-bottom: 1px dashed rgba(245, 176, 65, 0.4);
             padding-bottom: 15px;
-            text-shadow: 0 0 15px rgba(255, 241, 118, 0.5);
+            text-shadow: 0 0 15px rgba(255, 241, 118, 0.6);
             letter-spacing: 2px;
         }
 
@@ -296,6 +270,7 @@
             text-align: justify;
             text-justify: inter-word;
             opacity: 0.95;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
         ul {
@@ -308,9 +283,10 @@
             margin-bottom: 24px;
             position: relative;
             padding-left: 40px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
-        /* Viñeta de estrella mística de cuatro puntas idéntica a los gráficos */
+        /* Viñeta de estrella mística de cuatro puntas */
         li::before {
             content: "";
             position: absolute;
@@ -323,17 +299,18 @@
             box-shadow: 0 0 8px var(--accent-gold);
         }
 
-        /* Adaptabilidad Perfecta para Móviles */
+        /* Adaptabilidad para Dispositivos Móviles */
         @media (max-width: 768px) {
             header { padding: 20px; justify-content: center; }
             .logo { height: 55px; }
             .hero { padding-top: 130px; }
-            .divine-sun { width: 300px; height: 300px; }
+            .divine-sun { width: 340px; height: 340px; }
+            .video-container { border-radius: 20px; aspect-ratio: 16/9; }
+            .video-container video { margin-top: 0; }
             .btn-votar { font-size: 1.5rem; padding: 15px 50px; width: 90%; letter-spacing: 3px; }
             .info-card { padding: 35px 20px; border-radius: 16px; }
-            h2 { font-size: 2rem; }
+            h2 { font-size: 2.1rem; }
             p, li { font-size: 1.1rem; text-align: left; }
-            .hanging-star-container { display: none; } /* Limpieza visual en pantallas chicas */
         }
     </style>
 </head>
@@ -341,18 +318,11 @@
 
     <div class="fantasy-background">
         <div class="divine-rays"></div>
-        <div class="cosmic-cloud cloud-top-left"></div>
-        <div class="cosmic-cloud cloud-bottom-right"></div>
-        
-        <div class="hanging-star-container st-1"><div class="star-wire"></div><div class="fairy-star"></div></div>
-        <div class="hanging-star-container st-2"><div class="star-wire"></div><div class="fairy-star"></div></div>
-        <div class="hanging-star-container st-3"><div class="star-wire"></div><div class="fairy-star"></div></div>
-        <div class="hanging-star-container st-4"><div class="star-wire"></div><div class="fairy-star"></div></div>
 
-        <div class="sparkle-dust" style="left: 10%; width: 3px; height: 3px; animation-duration: 8s; animation-delay: -1s;"></div>
-        <div class="sparkle-dust" style="left: 45%; width: 4px; height: 4px; animation-duration: 12s; animation-delay: -4s;"></div>
-        <div class="sparkle-dust" style="right: 20%; width: 2px; height: 2px; animation-duration: 7s; animation-delay: -2s;"></div>
-        <div class="sparkle-dust" style="right: 35%; width: 5px; height: 5px; animation-duration: 14s; animation-delay: -6s;"></div>
+        <div class="sparkle-dust" style="left: 8%; width: 3px; height: 3px; animation-duration: 9s; animation-delay: -1s;"></div>
+        <div class="sparkle-dust" style="left: 25%; width: 5px; height: 5px; animation-duration: 14s; animation-delay: -3s;"></div>
+        <div class="sparkle-dust" style="right: 15%; width: 2px; height: 2px; animation-duration: 8s; animation-delay: -2s;"></div>
+        <div class="sparkle-dust" style="right: 30%; width: 4px; height: 4px; animation-duration: 11s; animation-delay: -5s;"></div>
     </div>
 
     <header>
