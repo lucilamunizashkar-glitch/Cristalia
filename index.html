@@ -36,7 +36,7 @@
         }
 
         /* ==========================================================================
-           FONDO CON TUS ILUSTRACIONES DE REFERENCIA
+           FONDO CON ILUSTRACIONES, CRISTALES Y NUBES DE ENSUEÑO
            ========================================================================== */
         .fantasy-background {
             position: fixed;
@@ -47,12 +47,11 @@
             z-index: -2;
             overflow: hidden;
             pointer-events: none;
-            /* Se usa tu ilustración principal de fondo celestial de manera fija y centrada */
             background: url('image_25a0c5.jpg') no-repeat center center;
             background-size: cover;
         }
 
-        /* Rayos dorados vectoriales acoplados sobre la ilustración de fondo */
+        /* Rayos dorados místicos sobre el fondo */
         .divine-rays {
             position: absolute;
             top: -20%;
@@ -64,13 +63,13 @@
                 transparent 0deg,
                 rgba(255, 241, 118, 0.05) 15deg,
                 transparent 30deg,
-                rgba(112, 25, 125, 0.1) 45deg,
+                rgba(112, 25, 125, 0.08) 45deg,
                 transparent 70deg,
                 rgba(255, 241, 118, 0.04) 105deg,
                 transparent 140deg,
-                rgba(112, 25, 125, 0.08) 200deg,
+                rgba(112, 25, 125, 0.06) 200deg,
                 transparent 240deg,
-                rgba(255, 241, 118, 0.06) 290deg,
+                rgba(255, 241, 118, 0.05) 290deg,
                 transparent 360deg
             );
             filter: blur(4px);
@@ -78,27 +77,94 @@
             animation: raysOrbit 140s linear infinite;
         }
 
-        /* Brillantina de luz residual cayendo */
+        /* Capas de nubes de ensueño adicionales */
+        .dream-cloud {
+            position: absolute;
+            background: radial-gradient(circle, var(--magic-magenta) 0%, rgba(58, 18, 93, 0.6) 60%, transparent 100%);
+            border-radius: 50%;
+            filter: blur(50px);
+            opacity: 0.35;
+            mix-blend-mode: screen;
+        }
+        .cloud-1 { width: 500px; height: 350px; top: -5%; left: -5%; }
+        .cloud-2 { width: 600px; height: 400px; bottom: -10%; right: -5%; }
+
+        /* Estrellas colgantes ornamentales */
+        .hanging-star-container {
+            position: absolute;
+            top: 0;
+            z-index: -1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: starSway 7s ease-in-out infinite alternate;
+            transform-origin: top center;
+        }
+        .star-wire {
+            width: 1px;
+            background: linear-gradient(to bottom, rgba(255,241,118,0), rgba(255,241,118,0.35));
+        }
+        .fairy-star {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #fff, var(--accent-gold));
+            clip-path: polygon(50% 0%, 63% 37%, 100% 50%, 63% 63%, 50% 100%, 37% 63%, 0% 50%, 37% 37%);
+            filter: drop-shadow(0 0 6px rgba(255,241,118,0.8));
+        }
+        .st-1 { left: 10%; .star-wire { height: 160px; } }
+        .st-2 { left: 20%; .star-wire { height: 90px; } .fairy-star { transform: scale(0.75); } animation-delay: -2s; }
+        .st-3 { right: 12%; .star-wire { height: 130px; } .fairy-star { transform: scale(1.1); } animation-delay: -3.5s; }
+
+        /* Pequeños fragmentos de cristales de vitraux flotando */
+        .vitraux-crystal {
+            position: absolute;
+            opacity: 0;
+            animation: floatCrystal 14s linear infinite;
+            filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));
+        }
+        /* Formas geométricas pequeñas para simular astillas de vitral */
+        .crystal-rhombus {
+            width: 12px;
+            height: 18px;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        }
+        .crystal-triangle {
+            width: 14px;
+            height: 14px;
+            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+        }
+
+        /* Brillantina base */
         .sparkle-dust {
             position: absolute;
             background: #fff;
             border-radius: 50%;
-            filter: drop-shadow(0 0 5px var(--accent-gold));
-            animation: floatDust 12s linear infinite;
+            filter: drop-shadow(0 0 4px var(--accent-gold));
+            animation: floatDust 10s linear infinite;
         }
 
         @keyframes raysOrbit {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        @keyframes starSway {
+            0% { transform: rotate(-2.5deg); }
+            100% { transform: rotate(2.5deg); }
+        }
         @keyframes floatDust {
-            0% { transform: translateY(105vh) scale(0.3); opacity: 0; }
-            50% { opacity: 0.7; }
-            100% { transform: translateY(-5vh) scale(1); opacity: 0; }
+            0% { transform: translateY(105vh) scale(0.4); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-5vh) scale(0.9); opacity: 0; }
+        }
+        @keyframes floatCrystal {
+            0% { transform: translateY(105vh) rotate(0deg) scale(0.7); opacity: 0; }
+            15% { opacity: 0.6; }
+            85% { opacity: 0.6; }
+            100% { transform: translateY(-5vh) rotate(360deg) scale(1); opacity: 0; }
         }
 
         /* ==========================================================================
-           INTERFAZ DE USUARIO (MÁGICA Y TRADICIONAL)
+           INTERFAZ DE USUARIO (REPRODUCTOR RECTANGULAR 16:9)
            ========================================================================== */
         header {
             display: flex;
@@ -122,44 +188,40 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 160px 20px 60px 20px;
+            padding: 150px 20px 60px 20px;
             text-align: center;
             position: relative;
         }
 
-        /* El gran destello central dorado que abraza el reproductor */
         .divine-sun {
             position: absolute;
-            top: 40%;
+            top: 42%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(255,241,118,0.22) 0%, rgba(112,25,125,0.06) 55%, transparent 75%);
+            width: 650px;
+            height: 650px;
+            background: radial-gradient(circle, rgba(255,241,118,0.18) 0%, rgba(112,25,125,0.05) 60%, transparent 75%);
             z-index: 0;
             pointer-events: none;
             mix-blend-mode: screen;
         }
 
-        /* Contenedor del video: Diseñado como un Vitral de Arco Gótico Ojival */
+        /* Contenedor estrictamente RECTANGULAR con proporción cinematográfica 16:9 */
         .video-container {
             width: 100%;
-            max-width: 880px; 
-            aspect-ratio: 16/10; /* Un formato levemente más vertical para favorecer el arco */
-            background-color: #05020c;
-            
-            /* Curva superior ojival simulando la ventana del castillo */
-            border-radius: 50% 50% 24px 24px / 22% 22% 24px 24px;
+            max-width: 900px; 
+            aspect-ratio: 16 / 9; 
+            background-color: #04010a;
+            border-radius: 16px; /* Bordes suavemente redondeados normales */
             overflow: hidden;
             
             border: 3.5px solid var(--deep-gold);
-            outline: 1px solid rgba(255, 241, 118, 0.4);
-            outline-offset: -10px;
+            outline: 1px solid rgba(255, 241, 118, 0.35);
+            outline-offset: -8px;
             
             box-shadow: 
-                0 25px 60px rgba(0, 0, 0, 0.85),
-                0 0 45px rgba(112, 25, 125, 0.5),
-                inset 0 0 40px rgba(0,0,0,0.9);
+                0 25px 55px rgba(0, 0, 0, 0.85),
+                0 0 40px rgba(112, 25, 125, 0.45);
             position: relative;
             z-index: 2;
         }
@@ -169,12 +231,11 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            margin-top: 10px; /* Compensa la curvatura del arco gótico */
         }
 
-        /* Botón Votar: Amuleto de Oro Místico */
+        /* Botón Votar */
         .btn-votar {
-            margin-top: 55px;
+            margin-top: 50px;
             padding: 18px 85px;
             font-family: 'Cinzel', serif;
             font-size: 1.8rem;
@@ -192,7 +253,7 @@
             z-index: 2;
             
             box-shadow: 
-                0 12px 35px rgba(0, 0, 0, 0.6),
+                0 12px 35px rgba(0, 0, 0, 0.5),
                 0 0 30px rgba(255, 241, 118, 0.5),
                 inset 0 2px 4px #fff;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -201,13 +262,13 @@
         .btn-votar:hover {
             transform: scale(1.05) translateY(-4px);
             box-shadow: 
-                0 15px 40px rgba(0, 0, 0, 0.7),
+                0 15px 40px rgba(0, 0, 0, 0.6),
                 0 0 55px var(--accent-gold),
-                0 0 25px rgba(255,255,255,0.9);
+                0 0 25px rgba(255,255,255,0.8);
             letter-spacing: 7px;
         }
 
-        /* Secciones de Información Estilo Pergaminos de Cristal Ocultos */
+        /* Secciones de Información */
         .info-section {
             max-width: 850px;
             margin: 0 auto;
@@ -231,7 +292,6 @@
             overflow: hidden;
         }
 
-        /* Integración de la ilustración del Castillo en el fondo de las tarjetas */
         .info-card::before {
             content: "";
             position: absolute;
@@ -241,7 +301,7 @@
             height: 100%;
             background: url('image_24bf52.jpg') no-repeat center bottom;
             background-size: cover;
-            opacity: 0.08; /* Muy sutil para que no afecte la lectura del texto */
+            opacity: 0.08; 
             mix-blend-mode: overlay;
             pointer-events: none;
             z-index: 0;
@@ -249,7 +309,7 @@
 
         .info-card * {
             position: relative;
-            z-index: 1; /* Posiciona el texto por encima del fondo del castillo */
+            z-index: 1;
         }
 
         h2 {
@@ -286,7 +346,6 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
-        /* Viñeta de estrella mística de cuatro puntas */
         li::before {
             content: "";
             position: absolute;
@@ -305,12 +364,12 @@
             .logo { height: 55px; }
             .hero { padding-top: 130px; }
             .divine-sun { width: 340px; height: 340px; }
-            .video-container { border-radius: 20px; aspect-ratio: 16/9; }
-            .video-container video { margin-top: 0; }
+            .video-container { border-radius: 12px; }
             .btn-votar { font-size: 1.5rem; padding: 15px 50px; width: 90%; letter-spacing: 3px; }
             .info-card { padding: 35px 20px; border-radius: 16px; }
             h2 { font-size: 2.1rem; }
             p, li { font-size: 1.1rem; text-align: left; }
+            .hanging-star-container { display: none; }
         }
     </style>
 </head>
@@ -318,11 +377,22 @@
 
     <div class="fantasy-background">
         <div class="divine-rays"></div>
+        
+        <div class="dream-cloud cloud-1"></div>
+        <div class="dream-cloud cloud-2"></div>
 
-        <div class="sparkle-dust" style="left: 8%; width: 3px; height: 3px; animation-duration: 9s; animation-delay: -1s;"></div>
-        <div class="sparkle-dust" style="left: 25%; width: 5px; height: 5px; animation-duration: 14s; animation-delay: -3s;"></div>
-        <div class="sparkle-dust" style="right: 15%; width: 2px; height: 2px; animation-duration: 8s; animation-delay: -2s;"></div>
-        <div class="sparkle-dust" style="right: 30%; width: 4px; height: 4px; animation-duration: 11s; animation-delay: -5s;"></div>
+        <div class="hanging-star-container st-1"><div class="star-wire"></div><div class="fairy-star"></div></div>
+        <div class="hanging-star-container st-2"><div class="star-wire"></div><div class="fairy-star"></div></div>
+        <div class="hanging-star-container st-3"><div class="star-wire"></div><div class="fairy-star"></div></div>
+
+        <div class="vitraux-crystal crystal-rhombus" style="left: 15%; background: rgba(0, 191, 255, 0.6); animation-duration: 13s; animation-delay: -2s;"></div>
+        <div class="vitraux-crystal crystal-triangle" style="left: 35%; background: rgba(238, 130, 238, 0.5); animation-duration: 16s; animation-delay: -5s;"></div>
+        <div class="vitraux-crystal crystal-rhombus" style="right: 25%; background: rgba(255, 215, 0, 0.5); animation-duration: 12s; animation-delay: -1s;"></div>
+        <div class="vitraux-crystal crystal-triangle" style="right: 8%; background: rgba(255, 69, 0, 0.4); animation-duration: 18s; animation-delay: -4s;"></div>
+
+        <div class="sparkle-dust" style="left: 5%; width: 2px; height: 2px; animation-duration: 8s; animation-delay: -1s;"></div>
+        <div class="sparkle-dust" style="left: 45%; width: 3px; height: 3px; animation-duration: 11s; animation-delay: -3s;"></div>
+        <div class="sparkle-dust" style="right: 18%; width: 2px; height: 2px; animation-duration: 9s; animation-delay: -2s;"></div>
     </div>
 
     <header>
