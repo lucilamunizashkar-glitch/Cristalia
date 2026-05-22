@@ -36,7 +36,7 @@
         }
 
         /* ==========================================================================
-           FONDO CON ILUSTRACIONES, CRISTALES Y NUBES DE ENSUEÑO
+           FONDO CON ILUSTRACIONES, CRISTALES Y ESTRELLAS EN MOVIMIENTO
            ========================================================================== */
         .fantasy-background {
             position: fixed;
@@ -77,35 +77,7 @@
             animation: raysOrbit 140s linear infinite;
         }
 
-        /* Nubes ilustradas estilizadas (Curvas de fantasía basadas en la referencia) */
-        .dream-cloud {
-            position: absolute;
-            background: linear-gradient(135deg, var(--magic-magenta) 0%, rgba(58, 18, 93, 0.85) 100%);
-            mix-blend-mode: screen;
-            opacity: 0.65;
-            /* Silueta fluida e ilustrada generada por path */
-            clip-path: path("M 0,150 C 30,120 80,100 120,130 C 160,90 240,80 290,120 C 350,70 450,90 480,160 C 530,150 580,180 570,230 C 590,280 550,340 500,340 C 400,350 100,360 0,320 Z");
-            filter: blur(8px);
-        }
-        
-        .cloud-1 {
-            width: 580px;
-            height: 360px;
-            top: -5%;
-            left: -8%;
-            transform: scaleX(-1) rotate(15deg); /* Espejada para dinamismo */
-        }
-
-        .cloud-2 {
-            width: 650px;
-            height: 380px;
-            bottom: -5%;
-            right: -10%;
-            transform: rotate(-10deg);
-            opacity: 0.5;
-        }
-
-        /* Estrellas colgantes ornamentales MÁS GRANDES Y COMPLEJAS (Picos múltiples) */
+        /* Estrellas colgantes ornamentales GRANDES con balanceo de izquierda a derecha */
         .hanging-star-container {
             position: absolute;
             top: 0;
@@ -113,26 +85,24 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            animation: starSway 8s ease-in-out infinite alternate;
+            animation: starSway 6s ease-in-out infinite alternate;
             transform-origin: top center;
         }
         
         .star-wire {
             width: 1.5px;
-            background: linear-gradient(to bottom, rgba(255,241,118,0), rgba(255,241,118,0.5));
+            background: linear-gradient(to bottom, rgba(255,241,118,0), rgba(255,241,118,0.55));
         }
         
         .fairy-star {
             position: relative;
-            width: 55px; /* Tamaño incrementado bastante acorde a la referencia */
+            width: 55px; 
             height: 55px;
             background: linear-gradient(135deg, #ffffff 0%, var(--accent-gold) 60%, var(--deep-gold) 100%);
-            /* Clip-path complejo que simula una estrella de 8 picos estilizada */
             clip-path: polygon(50% 0%, 54% 33%, 85% 15%, 63% 46%, 100% 50%, 63% 54%, 85% 85%, 54% 67%, 50% 100%, 46% 67%, 15% 85%, 37% 54%, 0% 50%, 37% 46%, 15% 15%, 46% 33%);
             filter: drop-shadow(0 0 12px rgba(255,241,118,0.9));
         }
 
-        /* Añadimos un pequeño destello central interno a la estrella */
         .fairy-star::after {
             content: '';
             position: absolute;
@@ -145,27 +115,31 @@
             filter: blur(1px);
         }
         
-        .st-1 { left: 8%; .star-wire { height: 180px; } }
-        .st-2 { left: 22%; .star-wire { height: 110px; } .fairy-star { transform: scale(0.7); } animation-delay: -2s; }
-        .st-3 { right: 10%; .star-wire { height: 150px; } .fairy-star { transform: scale(1.2); } animation-delay: -3.5s; }
+        /* Posiciones, largos de hilos y desajustes de tiempos para naturalidad */
+        .st-1 { left: 5%; .star-wire { height: 190px; } animation-delay: -0.5s; }
+        .st-2 { left: 16%; .star-wire { height: 110px; } .fairy-star { transform: scale(0.7); } animation-delay: -3.2s; }
+        .st-3 { left: 28%; .star-wire { height: 230px; } .fairy-star { transform: scale(0.9); } animation-delay: -1.8s; }
+        .st-4 { right: 28%; .star-wire { height: 140px; } .fairy-star { transform: scale(0.8); } animation-delay: -4.5s; }
+        .st-5 { right: 15%; .star-wire { height: 210px; } .fairy-star { transform: scale(0.75); } animation-delay: -2.1s; }
+        .st-6 { right: 4%; .star-wire { height: 150px; } .fairy-star { transform: scale(1.15); } animation-delay: -0.2s; }
 
-        /* Pequeños fragmentos de cristales de vitraux flotando */
+        /* Fragmentos de cristales de vitraux flotando a lo largo de toda la página */
         .vitraux-crystal {
             position: absolute;
             opacity: 0;
-            animation: floatCrystal 14s linear infinite;
-            filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));
+            animation: floatCrystal 16s linear infinite;
+            filter: drop-shadow(0 0 6px rgba(255,255,255,0.4));
         }
-        /* Formas geométricas pequeñas para simular astillas de vitral */
+        
+        /* Variaciones de formas geométricas */
         .crystal-rhombus {
-            width: 12px;
-            height: 18px;
             clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
         }
         .crystal-triangle {
-            width: 14px;
-            height: 14px;
             clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+        }
+        .crystal-kite {
+            clip-path: polygon(50% 0%, 100% 35%, 50% 100%, 0% 35%);
         }
 
         /* Brillantina base */
@@ -177,24 +151,29 @@
             animation: floatDust 10s linear infinite;
         }
 
+        /* ANIMACIONES */
         @keyframes raysOrbit {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        
+        /* Balanceo suave de péndulo (izquierda a derecha) */
         @keyframes starSway {
-            0% { transform: rotate(-3deg); }
-            100% { transform: rotate(3deg); }
+            0% { transform: rotate(-4deg) translateX(-3px); }
+            100% { transform: rotate(4deg) translateX(3px); }
         }
+        
         @keyframes floatDust {
             0% { transform: translateY(105vh) scale(0.4); opacity: 0; }
             50% { opacity: 0.8; }
             100% { transform: translateY(-5vh) scale(0.9); opacity: 0; }
         }
+        
         @keyframes floatCrystal {
-            0% { transform: translateY(105vh) rotate(0deg) scale(0.7); opacity: 0; }
-            15% { opacity: 0.6; }
-            85% { opacity: 0.6; }
-            100% { transform: translateY(-5vh) rotate(360deg) scale(1); opacity: 0; }
+            0% { transform: translateY(105vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
         }
 
         /* ==========================================================================
@@ -240,7 +219,6 @@
             mix-blend-mode: screen;
         }
 
-        /* Contenedor estrictamente RECTANGULAR con proporción cinematográfica 16:9 */
         .video-container {
             width: 100%;
             max-width: 900px; 
@@ -267,7 +245,6 @@
             display: block;
         }
 
-        /* Botón Votar */
         .btn-votar {
             margin-top: 50px;
             padding: 18px 85px;
@@ -302,7 +279,6 @@
             letter-spacing: 7px;
         }
 
-        /* Secciones de Información */
         .info-section {
             max-width: 850px;
             margin: 0 auto;
@@ -392,7 +368,6 @@
             box-shadow: 0 0 8px var(--accent-gold);
         }
 
-        /* Adaptabilidad para Dispositivos Móviles */
         @media (max-width: 768px) {
             header { padding: 20px; justify-content: center; }
             .logo { height: 55px; }
@@ -412,21 +387,29 @@
     <div class="fantasy-background">
         <div class="divine-rays"></div>
         
-        <div class="dream-cloud cloud-1"></div>
-        <div class="dream-cloud cloud-2"></div>
-
         <div class="hanging-star-container st-1"><div class="star-wire"></div><div class="fairy-star"></div></div>
         <div class="hanging-star-container st-2"><div class="star-wire"></div><div class="fairy-star"></div></div>
         <div class="hanging-star-container st-3"><div class="star-wire"></div><div class="fairy-star"></div></div>
+        <div class="hanging-star-container st-4"><div class="star-wire"></div><div class="fairy-star"></div></div>
+        <div class="hanging-star-container st-5"><div class="star-wire"></div><div class="fairy-star"></div></div>
+        <div class="hanging-star-container st-6"><div class="star-wire"></div><div class="fairy-star"></div></div>
 
-        <div class="vitraux-crystal crystal-rhombus" style="left: 15%; background: rgba(0, 191, 255, 0.6); animation-duration: 13s; animation-delay: -2s;"></div>
-        <div class="vitraux-crystal crystal-triangle" style="left: 35%; background: rgba(238, 130, 238, 0.5); animation-duration: 16s; animation-delay: -5s;"></div>
-        <div class="vitraux-crystal crystal-rhombus" style="right: 25%; background: rgba(255, 215, 0, 0.5); animation-duration: 12s; animation-delay: -1s;"></div>
-        <div class="vitraux-crystal crystal-triangle" style="right: 8%; background: rgba(255, 69, 0, 0.4); animation-duration: 18s; animation-delay: -4s;"></div>
+        <div class="vitraux-crystal crystal-rhombus" style="left: 3%; width: 14px; height: 22px; background: rgba(0, 191, 255, 0.6); animation-duration: 13s; animation-delay: -2s;"></div>
+        <div class="vitraux-crystal crystal-triangle" style="left: 12%; width: 25px; height: 25px; background: rgba(238, 130, 238, 0.5); animation-duration: 18s; animation-delay: -5s;"></div>
+        <div class="vitraux-crystal crystal-kite" style="left: 22%; width: 18px; height: 28px; background: rgba(255, 105, 180, 0.55); animation-duration: 15s; animation-delay: -1s;"></div>
+        <div class="vitraux-crystal crystal-rhombus" style="left: 34%; width: 10px; height: 16px; background: rgba(255, 215, 0, 0.6); animation-duration: 11s; animation-delay: -7s;"></div>
+        <div class="vitraux-crystal crystal-triangle" style="left: 45%; width: 16px; height: 16px; background: rgba(0, 250, 154, 0.45); animation-duration: 20s; animation-delay: -3s;"></div>
+        <div class="vitraux-crystal crystal-kite" style="left: 55%; width: 22px; height: 34px; background: rgba(147, 112, 219, 0.5); animation-duration: 14s; animation-delay: -11s;"></div>
+        <div class="vitraux-crystal crystal-rhombus" style="left: 68%; width: 26px; height: 38px; background: rgba(255, 69, 0, 0.4); animation-duration: 17s; animation-delay: -4s;"></div>
+        <div class="vitraux-crystal crystal-triangle" style="left: 78%; width: 12px; height: 12px; background: rgba(72, 209, 204, 0.6); animation-duration: 12s; animation-delay: -9s;"></div>
+        <div class="vitraux-crystal crystal-kite" style="left: 88%; width: 15px; height: 24px; background: rgba(255, 165, 0, 0.5); animation-duration: 19s; animation-delay: -2.5s;"></div>
+        <div class="vitraux-crystal crystal-rhombus" style="left: 95%; width: 20px; height: 30px; background: rgba(138, 43, 226, 0.55); animation-duration: 16s; animation-delay: -6s;"></div>
 
-        <div class="sparkle-dust" style="left: 5%; width: 2px; height: 2px; animation-duration: 8s; animation-delay: -1s;"></div>
-        <div class="sparkle-dust" style="left: 45%; width: 3px; height: 3px; animation-duration: 11s; animation-delay: -3s;"></div>
-        <div class="sparkle-dust" style="right: 18%; width: 2px; height: 2px; animation-duration: 9s; animation-delay: -2s;"></div>
+        <div class="sparkle-dust" style="left: 7%; width: 2px; height: 2px; animation-duration: 8s; animation-delay: -1s;"></div>
+        <div class="sparkle-dust" style="left: 25%; width: 3px; height: 3px; animation-duration: 12s; animation-delay: -4s;"></div>
+        <div class="sparkle-dust" style="left: 50%; width: 2px; height: 2px; animation-duration: 10s; animation-delay: -2s;"></div>
+        <div class="sparkle-dust" style="right: 25%; width: 3px; height: 3px; animation-duration: 11s; animation-delay: -3s;"></div>
+        <div class="sparkle-dust" style="right: 9%; width: 2px; height: 2px; animation-duration: 9s; animation-delay: -5s;"></div>
     </div>
 
     <header>
