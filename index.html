@@ -100,6 +100,10 @@
             cursor: pointer;
             box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
             transition: all 0.3s ease-in-out;
+            
+            /* AGREGADO: Necesario para que la etiqueta <a> se comporte como botón */
+            text-decoration: none; 
+            display: inline-block;
         }
 
         .btn-votar:hover {
@@ -201,11 +205,9 @@
                 <source src="trailer.mp4" type="video/mp4">
                 Tu navegador no soporta videos integrados.
             </video>
-            
-            </div>
+        </div>
 
-        <button class="btn-votar">Votar</button>
-         <link href="https://lucilamunizashkar-glitch.github.io/agradecimiento/">
+        <a href="https://lucilamunizashkar-glitch.github.io/agradecimiento/" class="btn-votar">Votar</a>
 
     </main>
 
