@@ -134,25 +134,18 @@
         .st-5 { right: 15%; .star-wire { height: 210px; } .fairy-star { transform: scale(0.75); } animation-delay: -2.1s; }
         .st-6 { right: 4%; .star-wire { height: 150px; } .fairy-star { transform: scale(1.15); } animation-delay: -0.2s; }
 
-        /* Fragmentos de cristales de vitraux flotando con fino borde dorado */
+        /* Fragmentos de cristales de vitraux flotando con fino borde dorado - Colores más vivos y mayor opacidad */
         .vitraux-crystal {
             position: absolute;
             opacity: 0;
             animation: floatCrystal 16s linear infinite;
-            /* El drop shadow simula el fino perfil de plomo dorado de los vitrales */
-            filter: drop-shadow(0px 0px 1.5px rgba(245, 176, 65, 0.95)) drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+            filter: drop-shadow(0px 0px 2px rgba(255, 215, 0, 1)) drop-shadow(0 2px 5px rgba(0,0,0,0.4));
         }
         
         /* Variaciones de formas geométricas */
-        .crystal-rhombus {
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-        }
-        .crystal-triangle {
-            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-        }
-        .crystal-kite {
-            clip-path: polygon(50% 0%, 100% 35%, 50% 100%, 0% 35%);
-        }
+        .crystal-rhombus { clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); }
+        .crystal-triangle { clip-path: polygon(50% 0%, 100% 100%, 0% 100%); }
+        .crystal-kite { clip-path: polygon(50% 0%, 100% 35%, 50% 100%, 0% 35%); }
 
         /* Brillantina base */
         .sparkle-dust {
@@ -163,13 +156,27 @@
             animation: floatDust 10s linear infinite;
         }
 
+        /* 🌟 SISTEMA DE PARTÍCULAS / ESTRELLITAS DEL CURSOR */
+        .cursor-star {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 14px;
+            height: 14px;
+            background: linear-gradient(135deg, #ffffff, var(--accent-gold));
+            clip-path: polygon(50% 0%, 63% 37%, 100% 50%, 63% 63%, 50% 100%, 37% 63%, 0% 50%, 37% 37%);
+            pointer-events: none;
+            z-index: 9999;
+            animation: fallAndFade 0.8s ease-out forwards;
+            filter: drop-shadow(0 0 4px var(--accent-gold));
+        }
+
         /* ANIMACIONES */
         @keyframes raysOrbit {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
         
-        /* Balanceo suave de péndulo (izquierda a derecha) */
         @keyframes starSway {
             0% { transform: rotate(-4deg) translateX(-3px); }
             100% { transform: rotate(4deg) translateX(3px); }
@@ -183,9 +190,20 @@
         
         @keyframes floatCrystal {
             0% { transform: translateY(105vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.75; }
-            90% { opacity: 0.75; }
+            10% { opacity: 0.95; }
+            90% { opacity: 0.95; }
             100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes fallAndFade {
+            0% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--mx), var(--my)) scale(0.3) rotate(180deg);
+                opacity: 0;
+            }
         }
 
         /* ==========================================================================
@@ -414,16 +432,27 @@
         <div class="hanging-star-container st-5"><div class="star-wire"></div><div class="fairy-star"></div></div>
         <div class="hanging-star-container st-6"><div class="star-wire"></div><div class="fairy-star"></div></div>
 
-        <div class="vitraux-crystal crystal-rhombus" style="left: 3%; width: 14px; height: 22px; background: rgba(0, 191, 255, 0.6); animation-duration: 13s; animation-delay: -2s;"></div>
-        <div class="vitraux-crystal crystal-triangle" style="left: 12%; width: 25px; height: 25px; background: rgba(238, 130, 238, 0.5); animation-duration: 18s; animation-delay: -5s;"></div>
-        <div class="vitraux-crystal crystal-kite" style="left: 22%; width: 18px; height: 28px; background: rgba(255, 105, 180, 0.55); animation-duration: 15s; animation-delay: -1s;"></div>
-        <div class="vitraux-crystal crystal-rhombus" style="left: 34%; width: 10px; height: 16px; background: rgba(255, 215, 0, 0.6); animation-duration: 11s; animation-delay: -7s;"></div>
-        <div class="vitraux-crystal crystal-triangle" style="left: 45%; width: 16px; height: 16px; background: rgba(0, 250, 154, 0.45); animation-duration: 20s; animation-delay: -3s;"></div>
-        <div class="vitraux-crystal crystal-kite" style="left: 55%; width: 22px; height: 34px; background: rgba(147, 112, 219, 0.5); animation-duration: 14s; animation-delay: -11s;"></div>
-        <div class="vitraux-crystal crystal-rhombus" style="left: 68%; width: 26px; height: 38px; background: rgba(255, 69, 0, 0.4); animation-duration: 17s; animation-delay: -4s;"></div>
-        <div class="vitraux-crystal crystal-triangle" style="left: 78%; width: 12px; height: 12px; background: rgba(72, 209, 204, 0.6); animation-duration: 12s; animation-delay: -9s;"></div>
-        <div class="vitraux-crystal crystal-kite" style="left: 88%; width: 15px; height: 24px; background: rgba(255, 165, 0, 0.5); animation-duration: 19s; animation-delay: -2.5s;"></div>
-        <div class="vitraux-crystal crystal-rhombus" style="left: 95%; width: 20px; height: 30px; background: rgba(138, 43, 226, 0.55); animation-duration: 16s; animation-delay: -6s;"></div>
+        <div class="vitraux-crystal crystal-rhombus" style="left: 3%; width: 14px; height: 22px; background: rgba(0, 213, 255, 0.9); animation-duration: 13s; animation-delay: -2s;"></div>
+        <div class="vitraux-crystal crystal-triangle" style="left: 12%; width: 25px; height: 25px; background: rgba(255, 0, 255, 0.85); animation-duration: 18s; animation-delay: -5s;"></div>
+        <div class="vitraux-crystal crystal-kite" style="left: 22%; width: 18px; height: 28px; background: rgba(255, 20, 147, 0.9); animation-duration: 15s; animation-delay: -1s;"></div>
+        <div class="vitraux-crystal crystal-rhombus" style="left: 34%; width: 10px; height: 16px; background: rgba(255, 235, 0, 0.95); animation-duration: 11s; animation-delay: -7s;"></div>
+        <div class="vitraux-crystal crystal-triangle" style="left: 45%; width: 16px; height: 16px; background: rgba(0, 255, 128, 0.85); animation-duration: 20s; animation-delay: -3s;"></div>
+        <div class="vitraux-crystal crystal-kite" style="left: 55%; width: 22px; height: 34px; background: rgba(160, 32, 240, 0.85); animation-duration: 14s; animation-delay: -11s;"></div>
+        <div class="vitraux-crystal crystal-rhombus" style="left: 68%; width: 26px; height: 38px; background: rgba(255, 69, 0, 0.85); animation-duration: 17s; animation-delay: -4s;"></div>
+        <div class="vitraux-crystal crystal-triangle" style="left: 78%; width: 12px; height: 12px; background: rgba(0, 245, 255, 0.9); animation-duration: 12s; animation-delay: -9s;"></div>
+        <div class="vitraux-crystal crystal-kite" style="left: 88%; width: 15px; height: 24px; background: rgba(255, 140, 0, 0.9); animation-duration: 19s; animation-delay: -2.5s;"></div>
+        <div class="vitraux-crystal crystal-rhombus" style="left: 95%; width: 20px; height: 30px; background: rgba(148, 0, 211, 0.9); animation-duration: 16s; animation-delay: -6s;"></div>
+        
+        <div class="vitraux-crystal crystal-triangle" style="left: 8%; width: 18px; height: 18px; background: rgba(255, 0, 128, 0.9); animation-duration: 15s; animation-delay: -4s;"></div>
+        <div class="vitraux-crystal crystal-kite" style="left: 18%; width: 20px; height: 30px; background: rgba(0, 255, 200, 0.85); animation-duration: 12s; animation-delay: -8s;"></div>
+        <div class="vitraux-crystal crystal-rhombus" style="left: 29%; width: 15px; height: 25px; background: rgba(255, 215, 0, 0.95); animation-duration: 19s; animation-delay: -11s;"></div>
+        <div class="vitraux-crystal crystal-triangle" style="left: 40%; width: 22px; height: 22px; background: rgba(186, 85, 211, 0.9); animation-duration: 14s; animation-delay: -2s;"></div>
+        <div class="vitraux-crystal crystal-kite" style="left: 50%; width: 14px; height: 22px; background: rgba(255, 50, 50, 0.9); animation-duration: 16s; animation-delay: -5s;"></div>
+        <div class="vitraux-crystal crystal-rhombus" style="left: 62%; width: 18px; height: 28px; background: rgba(30, 144, 255, 0.9); animation-duration: 21s; animation-delay: -13s;"></div>
+        <div class="vitraux-crystal crystal-triangle" style="left: 73%; width: 15px; height: 15px; background: rgba(0, 250, 154, 0.9); animation-duration: 13s; animation-delay: -7s;"></div>
+        <div class="vitraux-crystal crystal-kite" style="left: 83%; width: 24px; height: 36px; background: rgba(255, 20, 147, 0.85); animation-duration: 17s; animation-delay: -3s;"></div>
+        <div class="vitraux-crystal crystal-rhombus" style="left: 91%; width: 12px; height: 18px; background: rgba(255, 255, 0, 0.95); animation-duration: 11s; animation-delay: -9s;"></div>
+        <div class="vitraux-crystal crystal-triangle" style="left: 97%; width: 16px; height: 16px; background: rgba(0, 191, 255, 0.9); animation-duration: 15s; animation-delay: -1s;"></div>
 
         <div class="sparkle-dust" style="left: 7%; width: 2px; height: 2px; animation-duration: 8s; animation-delay: -1s;"></div>
         <div class="sparkle-dust" style="left: 25%; width: 3px; height: 3px; animation-duration: 12s; animation-delay: -4s;"></div>
@@ -473,5 +502,39 @@
 
     </section>
 
+    <script>
+        document.querySelectorAll('a, button, video, .video-container').forEach(element => {
+            element.addEventListener('mousemove', (e) => {
+                // Controlar densidad de estrellas para suavidad de rendimiento
+                if (Math.random() > 0.25) return;
+
+                const star = document.createElement('div');
+                star.classList.add('cursor-star');
+
+                // Posición exacta del cursor en la pantalla
+                star.style.left = `${e.clientX}px`;
+                star.style.top = `${e.clientY}px`;
+
+                // Variación aleatoria de caída (física mágica de dispersión)
+                const moveX = (Math.random() - 0.5) * 60; // Caída hacia los lados
+                const moveY = Math.random() * 50 + 40;     // Caída hacia abajo
+
+                star.style.setProperty('--mx', `${moveX}px`);
+                star.style.setProperty('--my', `${moveY}px`);
+
+                // Tamaños aleatorios para que sean estrellitas más pequeñas
+                const size = Math.random() * 8 + 6;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+
+                document.body.appendChild(star);
+
+                // Remover la partícula una vez termine su animación
+                star.addEventListener('animationend', () => {
+                    star.remove();
+                });
+            });
+        });
+    </script>
 </body>
 </html>
