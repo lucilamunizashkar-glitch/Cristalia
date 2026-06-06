@@ -134,7 +134,7 @@
         .st-5 { right: 15%; .star-wire { height: 210px; } .fairy-star { transform: scale(0.75); } animation-delay: -2.1s; }
         .st-6 { right: 4%; .star-wire { height: 150px; } .fairy-star { transform: scale(1.15); } animation-delay: -0.2s; }
 
-        /* Fragmentos de cristales de vitraux flotando con fino borde dorado - Colores más vivos y mayor opacidad */
+        /* Fragmentos de cristales de vitraux flotando con fino borde dorado */
         .vitraux-crystal {
             position: absolute;
             opacity: 0;
@@ -207,7 +207,7 @@
         }
 
         /* ==========================================================================
-           INTERFAZ DE USUARIO (REPRODUCTOR RECTANGULAR 16:9)
+           INTERFAZ DE USUARIO
            ========================================================================== */
         header {
             display: flex;
@@ -268,13 +268,11 @@
             z-index: 2;
         }
 
-        /* Estilos ajustados para el Iframe de Youtube */
         .video-container iframe {
             width: 100%;
             height: 100%;
             border: none;
             display: block;
-            /* Se eliminó pointer-events: none para permitir clics en el video */
         }
 
         .btn-votar {
@@ -314,7 +312,7 @@
         .info-section {
             max-width: 850px;
             margin: 0 auto;
-            padding: 20px 20px 150px 20px;
+            padding: 20px 20px 100px 20px;
             position: relative;
             z-index: 2;
         }
@@ -354,6 +352,58 @@
             z-index: 1;
         }
 
+        /* Diseño responsivo lado a lado para la tarjeta de Lenora */
+        .character-flex {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .character-img {
+            width: 240px;
+            height: auto;
+            border-radius: 16px;
+            border: 3px solid var(--deep-gold);
+            box-shadow: 0 0 25px rgba(245, 176, 65, 0.3);
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        /* Contenedor adaptado para el Demoreel nativo en HTML5 */
+        .local-video-frame {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background-color: #04010a;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 2.5px solid var(--deep-gold);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+            margin-top: 20px;
+        }
+
+        .local-video-frame video {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+        }
+
+        /* Banner estético de cierre */
+        .closing-banner {
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 18px;
+            border: 3px solid var(--deep-gold);
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.85);
+        }
+
+        .closing-banner img {
+            width: 100%;
+            display: block;
+            height: auto;
+        }
+
         h2 {
             font-family: 'Cinzel', serif;
             color: var(--accent-gold);
@@ -364,6 +414,11 @@
             padding-bottom: 15px;
             text-shadow: 0 0 15px rgba(255, 241, 118, 0.6);
             letter-spacing: 2px;
+        }
+
+        /* Alineación izquierda para el título de Lenora en flex */
+        .character-flex h2 {
+            text-align: left;
         }
 
         p {
@@ -409,8 +464,12 @@
             .btn-votar { font-size: 1.5rem; padding: 15px 50px; width: 90%; letter-spacing: 3px; }
             .info-card { padding: 35px 20px; border-radius: 16px; }
             h2 { font-size: 2.1rem; }
+            .character-flex h2 { text-align: center; }
             p, li { font-size: 1.1rem; text-align: left; }
             .hanging-star-container { display: none; }
+            
+            .character-flex { flex-direction: column; text-align: center; gap: 25px; }
+            .character-img { width: 200px; }
         }
     </style>
 </head>
@@ -464,7 +523,7 @@
     </div>
 
     <header>
-        <img src="logo.png" alt="Cristalia Logo" class="logo">
+        <img src="cristalia.logo2.png" alt="Cristalia Logo" class="logo">
     </header>
 
     <main class="hero">
@@ -486,6 +545,7 @@
 
     <section class="info-section">
         
+        <!-- 1. HI-CONCEPT -->
         <article class="info-card">
             <h2>Hi-Concept</h2>
             <p>
@@ -493,6 +553,19 @@
             </p>
         </article>
 
+        <!-- 2. SECCIÓN DEL PERSONAJE: LENORA (DEBAJO DE HI-CONCEPT, ARRIBA DE MAIN FEATURES) -->
+        <article class="info-card character-flex">
+            <!-- Nota: Si cambiaste el nombre del archivo de la imagen, edítalo aquí abajo (ej: lenora.jpg) -->
+            <img src="lenora.png" alt="Lenora" class="character-img">
+            <div>
+                <h2>Lenora</h2>
+                <p>
+                    Lenora es una joven curiosa y perseverante que descubre los misteriosos vitrales de Sylvaris ocultos entre las ruinas de un antiguo castillo. A través de la restauración de estos fragmentos mágicos, comienza a reconstruir recuerdos perdidos y a revelar secretos que han permanecido ocultos durante generaciones. Su deseo de comprender el pasado la llevará a descubrir la historia olvidada de un mundo marcado por la magia, la guerra y la esperanza.
+                </p>
+            </div>
+        </article>
+
+        <!-- 3. MAIN FEATURES -->
         <article class="info-card">
             <h2>Main Features</h2>
             <ul>
@@ -504,37 +577,47 @@
             </ul>
         </article>
 
+        <!-- 4. VIDEO DEMOREEL LOCAL (DEBAJO DE MAIN FEATURES) -->
+        <article class="info-card">
+            <h2>Demoreel de Cristalia</h2>
+            <div class="local-video-frame">
+                <video controls>
+                    <source src="demoreel fb corregido.mp4" type="video/mp4">
+                    Tu navegador no soporta la reproducción de video nativo.
+                </video>
+            </div>
+        </article>
+
+        <!-- 5. IMAGEN DE FONDO DE CIERRE (ABAJO DE TODO) -->
+        <div class="closing-banner">
+            <img src="fondo cristalia.png" alt="Cristalia Arte de Cierre">
+        </div>
+
     </section>
 
     <script>
-        // Captura el rastro de estrellas únicamente en los botones/enlaces reales
         document.querySelectorAll('a, button').forEach(element => {
             element.addEventListener('mousemove', (e) => {
-                // Controlar densidad de estrellas para suavidad de rendimiento
                 if (Math.random() > 0.25) return;
 
                 const star = document.createElement('div');
                 star.classList.add('cursor-star');
 
-                // Posición exacta del cursor en la pantalla
                 star.style.left = `${e.clientX}px`;
                 star.style.top = `${e.clientY}px`;
 
-                // Variación aleatoria de caída (física mágica de dispersión)
-                const moveX = (Math.random() - 0.5) * 60; // Caída hacia los lados
-                const moveY = Math.random() * 50 + 40;     // Caída hacia abajo
+                const moveX = (Math.random() - 0.5) * 60;
+                const moveY = Math.random() * 50 + 40;
 
                 star.style.setProperty('--mx', `${moveX}px`);
                 star.style.setProperty('--my', `${moveY}px`);
 
-                // Tamaños aleatorios para que sean estrellitas más pequeñas
                 const size = Math.random() * 8 + 6;
                 star.style.width = `${size}px`;
                 star.style.height = `${size}px`;
 
                 document.body.appendChild(star);
 
-                // Remover la partícula una vez termine su animación
                 star.addEventListener('animationend', () => {
                     star.remove();
                 });
