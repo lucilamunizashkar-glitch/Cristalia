@@ -42,7 +42,7 @@
         }
 
         /* Asegurar que los botones interactivos mantengan el cursor místico */
-        a, button, video {
+        a, button, .video-overlay {
             cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><defs><linearGradient id='gold-grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%23ffffff'/><stop offset='40%' stop-color='%23fff176'/><stop offset='100%' stop-color='%23f5b041'/></linearGradient></defs><path d='M16 2 L18.5 10.5 L27 11 L20 16.5 L23 25 L16 20 L9 25 L12 16.5 L5 11 L13.5 10.5 Z' fill='url(%23gold-grad)' stroke='%230a041c' stroke-width='1.2'/><path d='M16 2 L16 20 M27 11 L16 16.5 M9 25 L16 16.5 M5 11 L16 16.5' stroke='%2370197d' stroke-width='0.6' opacity='0.7'/></svg>") 16 16, pointer;
         }
 
@@ -226,12 +226,13 @@
         }
 
         .hero {
+            /* Modificado: Reduje el padding superior para subir todo el contenido */
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 150px 20px 60px 20px;
+            padding: 90px 20px 40px 20px; 
             text-align: center;
             position: relative;
         }
@@ -268,15 +269,28 @@
             z-index: 2;
         }
 
-        .video-container video {
+        /* Estilos ajustados para el Iframe de Youtube */
+        .video-container iframe {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            border: none;
             display: block;
+            pointer-events: none; /* Permite que el overlay capture el evento del mouse */
+        }
+
+        /* Overlay para asegurar que el rastro de estrellas funcione sobre el video */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
         }
 
         .btn-votar {
-            margin-top: 50px;
+            /* Modificado: Margen reducido para que el botón esté más pegado al video */
+            margin-top: 20px; 
             padding: 18px 85px;
             font-family: 'Cinzel', serif;
             font-size: 1.8rem;
@@ -401,7 +415,7 @@
         @media (max-width: 768px) {
             header { padding: 20px; justify-content: center; }
             .logo { height: 55px; }
-            .hero { padding-top: 130px; }
+            .hero { padding-top: 100px; } /* Ajuste móvil para mostrar bien el botón */
             .divine-sun { width: 340px; height: 340px; }
             .video-container { border-radius: 12px; }
             .btn-votar { font-size: 1.5rem; padding: 15px 50px; width: 90%; letter-spacing: 3px; }
@@ -470,10 +484,15 @@
         <div class="divine-sun"></div>
         
         <div class="video-container">
-            <video controls autoplay muted loop poster="miniatura.jpg">
-                <source src="trailer.mp4" type="video/mp4">
-                Tu navegador no soporta videos integrados.
-            </video>
+            <!-- Iframe de YouTube con autoplay, mute, loop, y sin controles -->
+            <iframe 
+                src="https://www.youtube.com/embed/F71AFb_EXxU?autoplay=1&mute=1&loop=1&playlist=F71AFb_EXxU&controls=0&modestbranding=1&rel=0&showinfo=0" 
+                title="YouTube video player" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+            <!-- Overlay invisible para que el efecto del ratón (estrellitas) funcione sobre el video -->
+            <div class="video-overlay"></div>
         </div>
 
         <a href="https://lucilamunizashkar-glitch.github.io/agradecimiento/" class="btn-votar">Votar</a>
@@ -503,7 +522,8 @@
     </section>
 
     <script>
-        document.querySelectorAll('a, button, video, .video-container').forEach(element => {
+        // Apuntamos al overlay en vez del iframe directamente para que se capture el evento
+        document.querySelectorAll('a, button, .video-overlay').forEach(element => {
             element.addEventListener('mousemove', (e) => {
                 // Controlar densidad de estrellas para suavidad de rendimiento
                 if (Math.random() > 0.25) return;
