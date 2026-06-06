@@ -62,7 +62,6 @@
             background-size: cover;
         }
 
-        /* Rayos dorados místicos sobre el fondo */
         .divine-rays {
             position: absolute;
             top: -20%;
@@ -88,7 +87,6 @@
             animation: raysOrbit 140s linear infinite;
         }
 
-        /* Estrellas colgantes ornamentales GRANDES con balanceo de izquierda a derecha */
         .hanging-star-container {
             position: absolute;
             top: 0;
@@ -126,7 +124,6 @@
             filter: blur(1px);
         }
         
-        /* Posiciones, largos de hilos y desajustes de tiempos para naturalidad */
         .st-1 { left: 5%; .star-wire { height: 190px; } animation-delay: -0.5s; }
         .st-2 { left: 16%; .star-wire { height: 110px; } .fairy-star { transform: scale(0.7); } animation-delay: -3.2s; }
         .st-3 { left: 28%; .star-wire { height: 230px; } .fairy-star { transform: scale(0.9); } animation-delay: -1.8s; }
@@ -134,7 +131,6 @@
         .st-5 { right: 15%; .star-wire { height: 210px; } .fairy-star { transform: scale(0.75); } animation-delay: -2.1s; }
         .st-6 { right: 4%; .star-wire { height: 150px; } .fairy-star { transform: scale(1.15); } animation-delay: -0.2s; }
 
-        /* Fragmentos de cristales de vitraux flotando con fino borde dorado */
         .vitraux-crystal {
             position: absolute;
             opacity: 0;
@@ -142,12 +138,10 @@
             filter: drop-shadow(0px 0px 2px rgba(255, 215, 0, 1)) drop-shadow(0 2px 5px rgba(0,0,0,0.4));
         }
         
-        /* Variaciones de formas geométricas */
         .crystal-rhombus { clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); }
         .crystal-triangle { clip-path: polygon(50% 0%, 100% 100%, 0% 100%); }
         .crystal-kite { clip-path: polygon(50% 0%, 100% 35%, 50% 100%, 0% 35%); }
 
-        /* Brillantina base */
         .sparkle-dust {
             position: absolute;
             background: #fff;
@@ -156,7 +150,6 @@
             animation: floatDust 10s linear infinite;
         }
 
-        /* 🌟 SISTEMA DE PARTÍCULAS / ESTRELLITAS DEL CURSOR */
         .cursor-star {
             position: fixed;
             top: 0;
@@ -171,40 +164,11 @@
             filter: drop-shadow(0 0 4px var(--accent-gold));
         }
 
-        /* ANIMACIONES */
-        @keyframes raysOrbit {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        @keyframes starSway {
-            0% { transform: rotate(-4deg) translateX(-3px); }
-            100% { transform: rotate(4deg) translateX(3px); }
-        }
-        
-        @keyframes floatDust {
-            0% { transform: translateY(105vh) scale(0.4); opacity: 0; }
-            50% { opacity: 0.8; }
-            100% { transform: translateY(-5vh) scale(0.9); opacity: 0; }
-        }
-        
-        @keyframes floatCrystal {
-            0% { transform: translateY(105vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.95; }
-            90% { opacity: 0.95; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-        }
-
-        @keyframes fallAndFade {
-            0% {
-                transform: translate(0, 0) scale(1) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translate(var(--mx), var(--my)) scale(0.3) rotate(180deg);
-                opacity: 0;
-            }
-        }
+        @keyframes raysOrbit { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes starSway { 0% { transform: rotate(-4deg) translateX(-3px); } 100% { transform: rotate(4deg) translateX(3px); } }
+        @keyframes floatDust { 0% { transform: translateY(105vh) scale(0.4); opacity: 0; } 50% { opacity: 0.8; } 100% { transform: translateY(-5vh) scale(0.9); opacity: 0; } }
+        @keyframes floatCrystal { 0% { transform: translateY(105vh) rotate(0deg); opacity: 0; } 10% { opacity: 0.95; } 90% { opacity: 0.95; } 100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; } }
+        @keyframes fallAndFade { 0% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 1; } 100% { transform: translate(var(--mx), var(--my)) scale(0.3) rotate(180deg); opacity: 0; } }
 
         /* ==========================================================================
            INTERFAZ DE USUARIO
@@ -221,7 +185,7 @@
         }
 
         .logo {
-            height: 110px; /* Agrandado para mejorar sustancialmente la legibilidad */
+            height: 110px; 
             filter: drop-shadow(0 0 15px rgba(255, 241, 118, 0.4));
         }
 
@@ -256,14 +220,10 @@
             background-color: #04010a;
             border-radius: 16px; 
             overflow: hidden;
-            
             border: 3.5px solid var(--deep-gold);
             outline: 1px solid rgba(255, 241, 118, 0.35);
             outline-offset: -8px;
-            
-            box-shadow: 
-                0 25px 55px rgba(0, 0, 0, 0.85),
-                0 0 40px rgba(112, 25, 125, 0.45);
+            box-shadow: 0 25px 55px rgba(0, 0, 0, 0.85), 0 0 40px rgba(112, 25, 125, 0.45);
             position: relative;
             z-index: 2;
         }
@@ -284,7 +244,6 @@
             text-transform: uppercase;
             letter-spacing: 5px;
             color: #120324;
-            
             background: linear-gradient(135deg, #fff9c4 0%, #fff176 40%, #f5b041 100%);
             border: 2px solid #ffffff;
             border-radius: 40px;
@@ -292,20 +251,13 @@
             display: inline-block;
             position: relative;
             z-index: 2;
-            
-            box-shadow: 
-                0 12px 35px rgba(0, 0, 0, 0.5),
-                0 0 30px rgba(255, 241, 118, 0.5),
-                inset 0 2px 4px #fff;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 241, 118, 0.5), inset 0 2px 4px #fff;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .btn-votar:hover {
             transform: scale(1.05) translateY(-4px);
-            box-shadow: 
-                0 15px 40px rgba(0, 0, 0, 0.6),
-                0 0 55px var(--accent-gold),
-                0 0 25px rgba(255,255,255,0.8);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 55px var(--accent-gold), 0 0 25px rgba(255,255,255,0.8);
             letter-spacing: 7px;
         }
 
@@ -325,9 +277,7 @@
             padding: 55px;
             border-radius: 24px;
             border: 1px solid rgba(245, 176, 65, 0.35);
-            box-shadow: 
-                0 30px 60px rgba(0, 0, 0, 0.8),
-                inset 0 0 30px rgba(112, 25, 125, 0.25);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(112, 25, 125, 0.25);
             margin-bottom: 60px;
             overflow: hidden;
         }
@@ -352,36 +302,67 @@
             z-index: 1;
         }
 
-        /* Diseño responsivo lado a lado para la sección del personaje */
+        /* Cadena de estrellitas flotantes */
+        .star-chain-divider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            margin: -20px 0 40px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .chain-star {
+            width: 14px;
+            height: 14px;
+            background: linear-gradient(135deg, #ffffff, var(--accent-gold));
+            clip-path: polygon(50% 0%, 63% 37%, 100% 50%, 63% 63%, 50% 100%, 37% 63%, 0% 50%, 37% 37%);
+            filter: drop-shadow(0 0 5px var(--accent-gold));
+            animation: gentleChainFloat 3s ease-in-out infinite alternate;
+        }
+
+        .chain-star:nth-child(1) { animation-delay: 0s; }
+        .chain-star:nth-child(2) { animation-delay: 0.3s; }
+        .chain-star:nth-child(3) { animation-delay: 0.6s; }
+        .chain-star:nth-child(4) { animation-delay: 0.9s; }
+        .chain-star:nth-child(5) { animation-delay: 1.2s; }
+
+        @keyframes gentleChainFloat {
+            0% { transform: translateY(0); opacity: 0.6; }
+            100% { transform: translateY(-8px); opacity: 1; }
+        }
+
+        /* Diseño de la sección del personaje */
         .character-flex {
             display: flex;
             gap: 40px;
             align-items: center;
         }
 
+        /* Bloqueo estructural para evitar colapsos visuales */
         .character-img {
             width: 240px;
-            height: auto;
+            height: 380px;
+            min-width: 240px;
             border-radius: 16px;
             border: 3px solid var(--deep-gold);
             box-shadow: 0 0 25px rgba(245, 176, 65, 0.3);
             object-fit: cover;
+            display: block;
             flex-shrink: 0;
         }
 
-        /* Contenedor del Demoreel Local directo frente al fondo (sin caja contenedora externa ni títulos) */
+        /* Contenedor del Demoreel Local SIN BORDES */
         .video-container-direct {
             width: 100%;
             aspect-ratio: 16 / 9;
             background-color: #04010a;
             border-radius: 16px;
             overflow: hidden;
-            border: 3.5px solid var(--deep-gold);
-            outline: 1px solid rgba(255, 241, 118, 0.35);
-            outline-offset: -8px;
-            box-shadow: 
-                0 25px 55px rgba(0, 0, 0, 0.85),
-                0 0 40px rgba(112, 25, 125, 0.45);
+            border: none;
+            outline: none;
+            box-shadow: 0 25px 55px rgba(0, 0, 0, 0.85), 0 0 40px rgba(112, 25, 125, 0.35);
             margin-bottom: 60px;
             position: relative;
             z-index: 2;
@@ -394,14 +375,14 @@
             object-fit: contain;
         }
 
-        /* Banner estético de cierre */
+        /* Banner estético de cierre optimizado y achicado */
         .closing-banner {
-            width: 100%;
-            margin-top: 20px;
-            border-radius: 18px;
-            border: 3px solid var(--deep-gold);
+            max-width: 550px; 
+            margin: 20px auto 0 auto; 
+            border-radius: 14px;
+            border: 1.5px solid var(--deep-gold); 
             overflow: hidden;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.85);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8);
         }
 
         .closing-banner img {
@@ -431,10 +412,7 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
-        ul {
-            list-style-type: none;
-        }
-
+        ul { list-style-type: none; }
         li {
             font-size: 1.2rem;
             color: var(--text-muted);
@@ -467,9 +445,9 @@
             h2 { font-size: 2.1rem; }
             p, li { font-size: 1.1rem; text-align: left; }
             .hanging-star-container { display: none; }
-            
             .character-flex { flex-direction: column; text-align: center; gap: 25px; }
-            .character-img { width: 200px; }
+            .character-img { width: 200px; height: 320px; min-width: 200px; }
+            .closing-banner { max-width: 90%; }
         }
     </style>
 </head>
@@ -553,12 +531,21 @@
             </p>
         </article>
 
+        <!-- CADENA DE ESTRELLITAS SEPARADORA -->
+        <div class="star-chain-divider">
+            <div class="chain-star"></div>
+            <div class="chain-star"></div>
+            <div class="chain-star"></div>
+            <div class="chain-star"></div>
+            <div class="chain-star"></div>
+        </div>
+
         <!-- 2. SECCIÓN DEL PERSONAJE: LENORA -->
         <article class="info-card character-flex">
             <img src="lenora.jpg" alt="Lenora" class="character-img">
             <div>
                 <p>
-                    Lenora es una joven curiosa y perseverante que descubre los misteriosos vitrales de Sylvaris ocultos entre las ruinas de un antiguo castillo. A través de la restauración de estos fragmentos mágicos, comienza a reconstruir recuerdos perdidos y a revelar secretos que han permanecido ocultos durante generaciones. Su deseo de comprender el pasado la llevará a descubrir la historia olvidada de un mundo marcado por la magia, la guerra y la esperanza.
+                    Lenora es una joven curiosa y perseverante que descubre los misteriosos vitrales de Sylvaris ocultos entre las ruinas de un antiguo castillo. A través de la restauración de estos fragmentos mágicos, comienza a reconstruir recuerdos perdidos y a revelar secretos que han permanecen ocultos durante generaciones. Su deseo de comprender el pasado la llevará a descubrir la historia olvidada de un mundo marcado por la magia, la guerra y la esperanza.
                 </p>
             </div>
         </article>
@@ -575,7 +562,7 @@
             </ul>
         </article>
 
-        <!-- 4. VIDEO DEMOREEL LOCAL (DIRETO EN EL FONDO, SIN CAJA EXTERNA NI TÍTULO) -->
+        <!-- 4. VIDEO DEMOREEL LOCAL (DIRETO EN EL FONDO, COMPLETAMENTE SIN BORDES) -->
         <div class="video-container-direct">
             <video controls>
                 <source src="demoreel fb corregido.mp4" type="video/mp4">
@@ -583,7 +570,7 @@
             </video>
         </div>
 
-        <!-- 5. IMAGEN DE FONDO DE CIERRE -->
+        <!-- 5. IMAGEN DE FONDO DE CIERRE (ACHICADA Y CON BORDE FINO) -->
         <div class="closing-banner">
             <img src="fondo cristalia.png" alt="Cristalia Arte de Cierre">
         </div>
