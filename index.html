@@ -172,7 +172,7 @@
 
         /* ==========================================================================
            INTERFAZ DE USUARIO
-           ========================================================================== */
+           ========================================================================= */
         header {
             display: flex;
             align-items: center;
@@ -264,7 +264,7 @@
         .info-section {
             max-width: 850px;
             margin: 0 auto;
-            padding: 20px 20px 100px 20px;
+            padding: 20px 20px 0 20px; /* Reducido padding inferior para el footer */
             position: relative;
             z-index: 2;
         }
@@ -399,23 +399,23 @@
 
         .project-link:hover {
             transform: scale(1.12);
-            filter: drop-shadow(0 0 15px var(--accent-gold));
+            filter: drop-shadow(0 0 5px var(--accent-gold)); /* Iluminación leve */
         }
 
-        /* Banner estético de cierre optimizado y achicado */
+        /* Banner estético de cierre SIN BORDES */
         .closing-banner {
-            max-width: 550px; 
-            margin: 20px auto 0 auto; 
-            border-radius: 14px;
-            border: 1.5px solid var(--deep-gold); 
-            overflow: hidden;
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8);
+            width: 100%;
+            position: relative;
+            margin: 40px 0 0 0;
+            z-index: 1;
         }
 
         .closing-banner img {
             width: 100%;
             display: block;
             height: auto;
+            border: none;
+            filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.7)); /* Efecto para no quedar vacío */
         }
 
         h2 {
@@ -475,7 +475,6 @@
             .character-flex { flex-direction: column; text-align: center; gap: 25px; }
             .character-img { width: 200px; height: 320px; min-width: 200px; }
             .projects-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-            .closing-banner { max-width: 90%; }
         }
     </style>
 </head>
@@ -551,7 +550,6 @@
 
     <section class="info-section">
         
-        <!-- 1. HI-CONCEPT -->
         <article class="info-card">
             <h2>Hi-Concept</h2>
             <p>
@@ -559,7 +557,6 @@
             </p>
         </article>
 
-        <!-- CADENA DE ESTRELLITAS SEPARADORA -->
         <div class="star-chain-divider">
             <div class="chain-star"></div>
             <div class="chain-star"></div>
@@ -568,7 +565,6 @@
             <div class="chain-star"></div>
         </div>
 
-        <!-- 2. SECCIÓN DEL PERSONAJE: LENORA -->
         <article class="info-card character-flex">
             <img src="lenora.jpg" alt="Lenora" class="character-img">
             <div>
@@ -578,7 +574,6 @@
             </div>
         </article>
 
-        <!-- 3. MAIN FEATURES -->
         <article class="info-card">
             <h2>Main Features</h2>
             <ul>
@@ -590,7 +585,14 @@
             </ul>
         </article>
 
-        <!-- 4. VIDEO DEMOREEL LOCAL (COMPLETAMENTE SIN BORDES) -->
+        <div class="star-chain-divider">
+            <div class="chain-star"></div>
+            <div class="chain-star"></div>
+            <div class="chain-star"></div>
+            <div class="chain-star"></div>
+            <div class="chain-star"></div>
+        </div>
+
         <div class="video-container-direct">
             <video controls>
                 <source src="demoreel fb corregido.mp4" type="video/mp4">
@@ -598,27 +600,32 @@
             </video>
         </div>
 
-        <!-- 5. LINKS A OTROS PROYECTOS -->
         <article class="info-card">
-            <h2>Links a otros proyectos</h2>
+            <h2>Aventúrate en otros mundos</h2>
             <div class="projects-grid">
-                <!-- Los 10 proyectos con sus respectivos enlaces -->
-                <a href="https://arcetaller.wixsite.com/sweetescape" target="_blank" class="project-link"><img src="sweet_escape.png" alt="Sweet Escape"></a>
-                <a href="https://terrabusiagustina-bit.github.io/Out-of-the-Bounds/" target="_blank" class="project-link"><img src="out_of_the_bounds.png" alt="Out of the Bounds"></a>
-                <a href="https://garciaguevarakiara.wixsite.com/intrusion" target="_blank" class="project-link"><img src="intrusion.png" alt="Intrusion"></a>
-                <a href="https://amyranmy.github.io/Echoes-/" target="_blank" class="project-link"><img src="echoes.png" alt="Echoes"></a>
-                <a href="https://sakaearts.github.io/beecoming/" target="_blank" class="project-link"><img src="bee_coming.png" alt="Bee Coming"></a>
-                <a href="https://sofiacerizola.wixsite.com/to-space-and-back" target="_blank" class="project-link"><img src="to_space_and_back.png" alt="To Space and Back"></a>
-                <a href="https://melinaanahiramirezceccarelli-beep.github.io/Glitch-Alley/" target="_blank" class="project-link"><img src="glitch_alley.png" alt="Glitch Alley"></a>
-                <a href="https://francorodriguez1.wixsite.com/umbra-morfeus-grimor" target="_blank" class="project-link"><img src="umbra_morfeus_grimor.png" alt="Umbra Morfeus Grimor"></a>
-                <a href="https://maitevictorial.wixsite.com/maitelopezrosende" target="_blank" class="project-link"><img src="proyecto_maite.png" alt="Proyecto Maite"></a>
-                <a href="https://abrilroldan4.wixsite.com/abrilroldan" target="_blank" class="project-link"><img src="proyecto_abril.png" alt="Proyecto Abril"></a>
+                <a href="https://arcetaller.wixsite.com/sweetescape" target="_blank" class="project-link"><img src="LogoSweetEscape.png" alt="Sweet Escape"></a>
+                <a href="https://terrabusiagustina-bit.github.io/Out-of-the-Bounds/" target="_blank" class="project-link"><img src="OutOfTheBounds.png" alt="Out of the Bounds"></a>
+                <a href="https://garciaguevarakiara.wixsite.com/intrusion" target="_blank" class="project-link"><img src="Intrusión.png" alt="Intrusion"></a>
+                <a href="https://amyranmy.github.io/Echoes-/" target="_blank" class="project-link"><img src="IMG_0926.PNG" alt="Echoes"></a>
+                <a href="https://sakaearts.github.io/beecoming/" target="_blank" class="project-link"><img src="Logo Bee.png" alt="Bee Coming"></a>
+                <a href="https://sofiacerizola.wixsite.com/to-space-and-back" target="_blank" class="project-link"><img src="logo-TSAB.png" alt="To Space and Back"></a>
+                <a href="https://melinaanahiramirezceccarelli-beep.github.io/Glitch-Alley/" target="_blank" class="project-link"><img src="logo GA.png" alt="Glitch Alley"></a>
+                <a href="https://francorodriguez1.wixsite.com/umbra-morfeus-grimor" target="_blank" class="project-link"><img src="Sin título-1.png" alt="Umbra Morfeus Grimor"></a>
+                <a href="https://maitevictorial.wixsite.com/maitelopezrosende" target="_blank" class="project-link"><img src="Patocalipsis.png" alt="Proyecto Maite"></a>
+                <a href="https://abrilroldan4.wixsite.com/abrilroldan" target="_blank" class="project-link"><img src="logo.png" alt="Proyecto Abril"></a>
             </div>
         </article>
 
-        <!-- 6. IMAGEN DE FONDO DE CIERRE -->
         <div class="closing-banner">
             <img src="fondo cristalia.png" alt="Cristalia Arte de Cierre">
+        </div>
+
+        <div class="star-chain-divider" style="margin-top: 40px; margin-bottom: 20px;">
+            <div class="chain-star"></div>
+            <div class="chain-star"></div>
+            <div class="chain-star"></div>
+            <div class="chain-star"></div>
+            <div class="chain-star"></div>
         </div>
 
     </section>
