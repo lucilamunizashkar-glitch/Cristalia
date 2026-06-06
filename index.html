@@ -212,7 +212,7 @@
         header {
             display: flex;
             align-items: center;
-            padding: 30px 50px;
+            padding: 25px 50px;
             position: absolute;
             top: 0;
             left: 0;
@@ -221,7 +221,7 @@
         }
 
         .logo {
-            height: 75px;
+            height: 110px; /* Agrandado para mejorar sustancialmente la legibilidad */
             filter: drop-shadow(0 0 15px rgba(255, 241, 118, 0.4));
         }
 
@@ -231,7 +231,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 90px 20px 40px 20px; 
+            padding: 130px 20px 40px 20px; 
             text-align: center;
             position: relative;
         }
@@ -352,7 +352,7 @@
             z-index: 1;
         }
 
-        /* Diseño responsivo lado a lado para la tarjeta de Lenora */
+        /* Diseño responsivo lado a lado para la sección del personaje */
         .character-flex {
             display: flex;
             gap: 40px;
@@ -369,19 +369,25 @@
             flex-shrink: 0;
         }
 
-        /* Contenedor adaptado para el Demoreel nativo en HTML5 */
-        .local-video-frame {
+        /* Contenedor del Demoreel Local directo frente al fondo (sin caja contenedora externa ni títulos) */
+        .video-container-direct {
             width: 100%;
             aspect-ratio: 16 / 9;
             background-color: #04010a;
-            border-radius: 14px;
+            border-radius: 16px;
             overflow: hidden;
-            border: 2.5px solid var(--deep-gold);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
-            margin-top: 20px;
+            border: 3.5px solid var(--deep-gold);
+            outline: 1px solid rgba(255, 241, 118, 0.35);
+            outline-offset: -8px;
+            box-shadow: 
+                0 25px 55px rgba(0, 0, 0, 0.85),
+                0 0 40px rgba(112, 25, 125, 0.45);
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 2;
         }
 
-        .local-video-frame video {
+        .video-container-direct video {
             width: 100%;
             height: 100%;
             display: block;
@@ -414,11 +420,6 @@
             padding-bottom: 15px;
             text-shadow: 0 0 15px rgba(255, 241, 118, 0.6);
             letter-spacing: 2px;
-        }
-
-        /* Alineación izquierda para el título de Lenora en flex */
-        .character-flex h2 {
-            text-align: left;
         }
 
         p {
@@ -457,14 +458,13 @@
 
         @media (max-width: 768px) {
             header { padding: 20px; justify-content: center; }
-            .logo { height: 55px; }
-            .hero { padding-top: 100px; }
+            .logo { height: 80px; }
+            .hero { padding-top: 140px; }
             .divine-sun { width: 340px; height: 340px; }
-            .video-container { border-radius: 12px; }
+            .video-container, .video-container-direct { border-radius: 12px; }
             .btn-votar { font-size: 1.5rem; padding: 15px 50px; width: 90%; letter-spacing: 3px; }
             .info-card { padding: 35px 20px; border-radius: 16px; }
             h2 { font-size: 2.1rem; }
-            .character-flex h2 { text-align: center; }
             p, li { font-size: 1.1rem; text-align: left; }
             .hanging-star-container { display: none; }
             
@@ -553,12 +553,10 @@
             </p>
         </article>
 
-        <!-- 2. SECCIÓN DEL PERSONAJE: LENORA (DEBAJO DE HI-CONCEPT, ARRIBA DE MAIN FEATURES) -->
+        <!-- 2. SECCIÓN DEL PERSONAJE: LENORA -->
         <article class="info-card character-flex">
-            <!-- Nota: Si cambiaste el nombre del archivo de la imagen, edítalo aquí abajo (ej: lenora.jpg) -->
-            <img src="lenora.png" alt="Lenora" class="character-img">
+            <img src="lenora.jpg" alt="Lenora" class="character-img">
             <div>
-                <h2>Lenora</h2>
                 <p>
                     Lenora es una joven curiosa y perseverante que descubre los misteriosos vitrales de Sylvaris ocultos entre las ruinas de un antiguo castillo. A través de la restauración de estos fragmentos mágicos, comienza a reconstruir recuerdos perdidos y a revelar secretos que han permanecido ocultos durante generaciones. Su deseo de comprender el pasado la llevará a descubrir la historia olvidada de un mundo marcado por la magia, la guerra y la esperanza.
                 </p>
@@ -577,18 +575,15 @@
             </ul>
         </article>
 
-        <!-- 4. VIDEO DEMOREEL LOCAL (DEBAJO DE MAIN FEATURES) -->
-        <article class="info-card">
-            <h2>Demoreel de Cristalia</h2>
-            <div class="local-video-frame">
-                <video controls>
-                    <source src="demoreel fb corregido.mp4" type="video/mp4">
-                    Tu navegador no soporta la reproducción de video nativo.
-                </video>
-            </div>
-        </article>
+        <!-- 4. VIDEO DEMOREEL LOCAL (DIRETO EN EL FONDO, SIN CAJA EXTERNA NI TÍTULO) -->
+        <div class="video-container-direct">
+            <video controls>
+                <source src="demoreel fb corregido.mp4" type="video/mp4">
+                Tu navegador no soporta la reproducción de video nativo.
+            </video>
+        </div>
 
-        <!-- 5. IMAGEN DE FONDO DE CIERRE (ABAJO DE TODO) -->
+        <!-- 5. IMAGEN DE FONDO DE CIERRE -->
         <div class="closing-banner">
             <img src="fondo cristalia.png" alt="Cristalia Arte de Cierre">
         </div>
