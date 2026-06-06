@@ -124,12 +124,34 @@
             filter: blur(1px);
         }
         
-        .st-1 { left: 5%; .star-wire { height: 190px; } animation-delay: -0.5s; }
-        .st-2 { left: 16%; .star-wire { height: 110px; } .fairy-star { transform: scale(0.7); } animation-delay: -3.2s; }
-        .st-3 { left: 28%; .star-wire { height: 230px; } .fairy-star { transform: scale(0.9); } animation-delay: -1.8s; }
-        .st-4 { right: 28%; .star-wire { height: 140px; } .fairy-star { transform: scale(0.8); } animation-delay: -4.5s; }
-        .st-5 { right: 15%; .star-wire { height: 210px; } .fairy-star { transform: scale(0.75); } animation-delay: -2.1s; }
-        .st-6 { right: 4%; .star-wire { height: 150px; } .fairy-star { transform: scale(1.15); } animation-delay: -0.2s; }
+        .st-1 { left: 5%; }
+        .st-1 .star-wire { height: 190px; }
+        .st-1 { animation-delay: -0.5s; }
+
+        .st-2 { left: 16%; }
+        .st-2 .star-wire { height: 110px; }
+        .st-2 .fairy-star { transform: scale(0.7); }
+        .st-2 { animation-delay: -3.2s; }
+
+        .st-3 { left: 28%; }
+        .st-3 .star-wire { height: 230px; }
+        .st-3 .fairy-star { transform: scale(0.9); }
+        .st-3 { animation-delay: -1.8s; }
+
+        .st-4 { right: 28%; }
+        .st-4 .star-wire { height: 140px; }
+        .st-4 .fairy-star { transform: scale(0.8); }
+        .st-4 { animation-delay: -4.5s; }
+
+        .st-5 { right: 15%; }
+        .st-5 .star-wire { height: 210px; }
+        .st-5 .fairy-star { transform: scale(0.75); }
+        .st-5 { animation-delay: -2.1s; }
+
+        .st-6 { right: 4%; }
+        .st-6 .star-wire { height: 150px; }
+        .st-6 .fairy-star { transform: scale(1.15); }
+        .st-6 { animation-delay: -0.2s; }
 
         .vitraux-crystal {
             position: absolute;
@@ -264,7 +286,7 @@
         .info-section {
             max-width: 850px;
             margin: 0 auto;
-            padding: 20px 20px 0 20px; /* Reducido padding inferior para el footer */
+            padding: 20px 20px 0 20px;
             position: relative;
             z-index: 2;
         }
@@ -399,7 +421,7 @@
 
         .project-link:hover {
             transform: scale(1.12);
-            filter: drop-shadow(0 0 5px var(--accent-gold)); /* Iluminación leve */
+            filter: drop-shadow(0 0 5px var(--accent-gold));
         }
 
         /* Banner estético de cierre SIN BORDES */
@@ -415,7 +437,7 @@
             display: block;
             height: auto;
             border: none;
-            filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.7)); /* Efecto para no quedar vacío */
+            filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.7));
         }
 
         h2 {
@@ -541,6 +563,7 @@
                 title="YouTube video player" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowfullscreen>
+             Deal
             </iframe>
         </div>
 
@@ -566,7 +589,7 @@
         </div>
 
         <article class="info-card character-flex">
-            <img src="lenora.jpg" alt="Lenora" class="character-img">
+            <img src="lenora.png" alt="Lenora" class="character-img">
             <div>
                 <p>
                     Lenora es una joven curiosa y perseverante que descubre los misteriosos vitrales de Sylvaris ocultos entre las ruinas de un antiguo castillo. A través de la restauración de estos fragmentos mágicos, comienza a reconstruir recuerdos perdidos y a revelar secretos que han permanecen ocultos durante generaciones. Su deseo de comprender el pasado la llevará a descubrir la historia olvidada de un mundo marcado por la magia, la guerra y la esperanza.
