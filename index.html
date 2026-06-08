@@ -364,10 +364,11 @@
 
         .character-img {
             width: 240px;
-            height: 380px;
+            height: auto;
+            max-height: 380px;
             min-width: 240px;
             border-radius: 16px;
-            object-fit: cover;
+            object-fit: contain; /* Cambio clave: Ajusta la imagen completa sin recortar */
             display: block;
             flex-shrink: 0;
         }
@@ -495,7 +496,7 @@
             p, li { font-size: 1.1rem; text-align: left; }
             .hanging-star-container { display: none; }
             .character-flex { flex-direction: column; text-align: center; gap: 25px; }
-            .character-img { width: 200px; height: 320px; min-width: 200px; }
+            .character-img { width: 200px; height: auto; max-height: 320px; min-width: 200px; } /* Ajuste responsivo */
             .projects-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
             .closing-banner img { max-width: 80%; } /* Tamaño adaptado para móviles */
         }
